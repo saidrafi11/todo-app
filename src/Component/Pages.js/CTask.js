@@ -45,27 +45,28 @@ const _id = task._id
                 .catch(er => console.error(er))
       
 
+
+    }
+
+    const handleDlt = () =>{
+        const agree = window.confirm(`Are you want to delete?`)
+        console.log(agree)
+        if(agree){
+            console.log(_id)
+           fetch(`https://mytodo-app-server.vercel.app/deletecompleatedtask/${_id}`,{
+            method: 'DELETE'})
+            .then(res => res.json())
+            .then(data => {
+                
+                console.log(data)
+                if(data.deletedCount > 0){
+                    alert('user deleted seccessfully')
+                    
+                    
+                } 
+            })
             
-
-
-
-
-
-
-        // fetch(`https://mytodo-app-server.vercel.app/addcomment/${_id}`, {
-        //                 method: 'PUT',
-                        
-        //                 header: { "Content-Type": "application/json" }, 
-        //                 body: JSON.stringify(comment)
-        //             })
-        //                 .then(res => res.json())
-        //                 .then(data => {
-                            
-        //                     console.log(data);
-                          
-        //                 })
-
-
+        }
     }
 
     
@@ -93,6 +94,7 @@ const _id = task._id
                         <form onSubmit={handleComment} className=' m-2'>
                             <input className=' h-10 w-full p-5 border-blue-500  rounded ' type="text" name='comment' placeholder='Add comment' required></input>
                             <div className='mt-2 '><BootstrapButton  type="submit"><h1 className='text-black'>Comment</h1></BootstrapButton></div>
+                            <div className='mt-2 '><BootstrapButton ><h1 onClick={handleDlt} className='text-black'>Delete task</h1></BootstrapButton></div>
                         </form>
                         
 
