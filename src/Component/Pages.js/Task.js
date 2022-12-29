@@ -1,8 +1,12 @@
 import React, { useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from './Context/AuthProvider';
 
 const Task = ({isClicked, setClicked,BootstrapButton, task}) => {
-   const id = task._id
+   const id = task._id;
+   const location = useLocation()
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/compleatedtask';
    
 
     const handleCompleatedTask = () => {
@@ -18,7 +22,7 @@ const Task = ({isClicked, setClicked,BootstrapButton, task}) => {
             body: JSON.stringify(compleatedTask)
         }).then(res => res.json())
             .then(data => {
-                // navigate(from, {replace: true})
+                navigate(from, {replace: true})
 
 
                 if (data.acknowledged) {

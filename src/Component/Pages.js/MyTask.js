@@ -1,11 +1,15 @@
 import { Button } from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { AuthContext } from './Context/AuthProvider';
 import Task from './Task';
 
 const MyTask = () => {
     const [isClicked, setClicked] = useState(false)
+    const location = useLocation()
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/compleatedtask';
 
     const BootstrapButton = styled(Button)({
         boxShadow: 'none',

@@ -3,12 +3,17 @@ import React, { useContext, useState } from 'react';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import styled from 'styled-components';
 import { AuthContext } from './Context/AuthProvider';
+import { useLocation, useNavigate } from 'react-router-dom';
 // import { styled } from '@mui/material/styles';
 const AddTask = () => {
     const [isClicked, setClicked] = useState(false)
     const [isClickedImg, setClickedImg] = useState(false)
     const [imgInput, setShowImgInput] = useState(false)
     const {user}= useContext(AuthContext)
+
+    const location = useLocation()
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/mytask';
 
     const BootstrapButton = styled(Button)({
         boxShadow: 'none',
@@ -76,7 +81,7 @@ const AddTask = () => {
                 body: JSON.stringify(task)
             }).then(res => res.json())
                 .then(data => {
-                    // navigate(from, {replace: true})
+                    navigate(from, { replace: true })
                     console.log(data);
     
     
