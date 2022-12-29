@@ -1,5 +1,6 @@
 import { Button } from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { AuthContext } from './Context/AuthProvider';
 import CTask from './CTask';
@@ -57,6 +58,7 @@ const CompleatedTask = () => {
             <h1  className='text-center mx-5 text-2xl font-bold'>Compleated task</h1>
 
             <div className='flex flex-col justify-center '>
+            <div className='mt-2 mx-auto'><BootstrapButton ><Link to={'/mytask'}  className='text-black'>Not compleated task</Link></BootstrapButton></div>
 
                 {
                     myCompleatedTasks?.map((task,i)=><CTask

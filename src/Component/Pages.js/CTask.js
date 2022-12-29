@@ -1,8 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Comments from './Comments';
 import { AuthContext } from './Context/AuthProvider';
 
 const CTask = ({ isClicked, setClicked, BootstrapButton, task }) => {
+    const [loading, setLoading] = useState(true)
+    const location = useLocation()
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/mytask';
     console.log(task);
 
 const _id = task._id
@@ -61,6 +66,7 @@ const _id = task._id
                 console.log(data)
                 if(data.deletedCount > 0){
                     alert('user deleted seccessfully')
+                    navigate(from, { replace: true })
                     
                     
                 } 
@@ -95,6 +101,7 @@ const _id = task._id
                             <input className=' h-10 w-full p-5 border-blue-500  rounded ' type="text" name='comment' placeholder='Add comment' required></input>
                             <div className='mt-2 '><BootstrapButton  type="submit"><h1 className='text-black'>Comment</h1></BootstrapButton></div>
                             <div className='mt-2 '><BootstrapButton ><h1 onClick={handleDlt} className='text-black'>Delete task</h1></BootstrapButton></div>
+                            <div className='mt-2 '><BootstrapButton ><Link to={'/mytask'}  className='text-black'>Not compleated task</Link></BootstrapButton></div>
                         </form>
                         
 
@@ -107,6 +114,7 @@ const _id = task._id
                 :
                 <>
                     <h1 className='px-5 py-2 '>{task.taskTitle}</h1>
+                    
                 </>
 
             }
