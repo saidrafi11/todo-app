@@ -18,7 +18,7 @@ const _id = task._id
         }
         console.log(comment)
 
-        fetch('http://localhost:5000/addcomment', {
+        fetch('https://mytodo-app-server.vercel.app/addcomment', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -52,7 +52,7 @@ const _id = task._id
 
 
 
-        // fetch(`http://localhost:5000/addcomment/${_id}`, {
+        // fetch(`https://mytodo-app-server.vercel.app/addcomment/${_id}`, {
         //                 method: 'PUT',
                         
         //                 header: { "Content-Type": "application/json" }, 

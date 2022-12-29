@@ -36,7 +36,7 @@ const CompleatedTask = () => {
 
         useEffect(() => {
 
-            fetch(`http://localhost:5000/compleatedtasks?email=${user?.email}`)
+            fetch(`https://mytodo-app-server.vercel.app/compleatedtasks?email=${user?.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setMyCompleatedTasks(data)

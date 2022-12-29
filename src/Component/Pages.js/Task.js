@@ -10,7 +10,7 @@ const Task = ({isClicked, setClicked,BootstrapButton, task}) => {
         const compleatedTask = task;
          console.log(compleatedTask);
 
-         fetch('http://localhost:5000/compleatedtasks', {
+         fetch('https://mytodo-app-server.vercel.app/compleatedtasks', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -40,7 +40,7 @@ const Task = ({isClicked, setClicked,BootstrapButton, task}) => {
             console.log(agree)
             if(agree){
                 console.log(id)
-               fetch(`http://localhost:5000/deletetask/${id}`,{
+               fetch(`https://mytodo-app-server.vercel.app/deletetask/${id}`,{
                 method: 'DELETE'})
                 .then(res => res.json())
                 .then(data => {

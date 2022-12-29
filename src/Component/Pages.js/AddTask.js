@@ -68,7 +68,7 @@ const AddTask = () => {
 
         
 
-             fetch('http://localhost:5000/mytasks', {
+             fetch('https://mytodo-app-server.vercel.app/mytasks', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

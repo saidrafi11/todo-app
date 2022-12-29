@@ -39,7 +39,7 @@ const MyTask = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/mytasks?email=${user?.email}`)
+        fetch(`https://mytodo-app-server.vercel.app/mytasks?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setMyTasks(data)

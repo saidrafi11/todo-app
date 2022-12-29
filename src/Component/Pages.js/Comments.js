@@ -6,7 +6,7 @@ const Comments = ({_id}) => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/comment?id=${_id}`)
+        fetch(`https://mytodo-app-server.vercel.app/comment?id=${_id}`)
             .then(res => res.json())
             .then(data => {
                 setComment(data)
