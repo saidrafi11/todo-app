@@ -82,7 +82,7 @@ const Task = ({isClicked, setClicked,BootstrapButton, task}) => {
 
 
     return (
-        <button onClick={() => setClicked(true)} className='w-full max-w-2xl lg:w-4/5 border-2 m-2 bg-blue-100 border-blue-900 mx-auto rounded-md text-left'>
+        <button onClick={() => setClicked(true)} className='w-full max-w-2xl lg:w-4/5 border-2 m-2 bg- bg-zinc-50  border-blue-900 mx-auto rounded-md text-left'>
 
 
                             {isClicked ?

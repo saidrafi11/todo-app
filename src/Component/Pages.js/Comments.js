@@ -15,7 +15,7 @@ const Comments = ({_id}) => {
 
     }, [_id])
     return (
-        <h1 className='px-5 py-1 '>Comment</h1>
+        <h1 className='px-5 py-1 '>{comment.map(c=><p>{c.comment}</p>)}</h1>
     );
 };
 
