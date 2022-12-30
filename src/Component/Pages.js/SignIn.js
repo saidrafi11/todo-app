@@ -119,11 +119,6 @@ const { createUser, updateUserProfile, providerLogin, googleProvider} = useConte
 
                 <div className='mx-auto flex justify-center'><Button variant="outlined"  onClick={handleGoogleSignIn} ><GoogleIcon ></GoogleIcon> Google oneclick SignIn</Button></div>
 
-
-
-
-
-
             </form>
             <p className='text-center pb-5'>Already have an account <Link className='font-bold' variant="outlined" to='/login'>Login</Link></p>
             </div>
