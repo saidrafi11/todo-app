@@ -8,14 +8,18 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import AuthProvider from './Component/Pages.js/Context/AuthProvider';
+import ThemeProvider from './Component/Pages.js/Context/ThemeProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+
+  
   <React.StrictMode>
+    <ThemeProvider >
     <AuthProvider>
     <App />
     </AuthProvider>
-    
+    </ThemeProvider>
   </React.StrictMode>
 );
 

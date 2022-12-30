@@ -75,8 +75,10 @@ const Task = ({isClicked, setClicked,BootstrapButton, task}) => {
 
                                         <h1 className='px-5 py-2 font-bold text-xl'>{task.taskTitle}</h1>
                                         <h1 className='px-5 py-2 '>{task.taskDescription}</h1>
-                                        <div className='m-2 '><BootstrapButton onClick={handleCompleatedTask}><h1 className='text-black'>Mark compleated</h1></BootstrapButton></div>
-                                        <div className='m-2 '><BootstrapButton ><h1 onClick={handleDlt} className='text-black'>Delete task</h1></BootstrapButton></div>
+                                        <div className='flex justify-center'>
+                                        <div className='m-2 '><BootstrapButton variant="outlined" onClick={handleCompleatedTask}><h1 className='text-black'>Mark compleated</h1></BootstrapButton></div>
+                                        <div className='m-2 '><BootstrapButton variant="outlined" ><h1 onClick={handleDlt} className='text-black'>Delete task</h1></BootstrapButton></div>
+                                        </div>
 
 
                                     </div>

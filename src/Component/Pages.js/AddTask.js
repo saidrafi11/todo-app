@@ -116,13 +116,14 @@ const AddTask = () => {
             <h1 className='text-center m-5 text-2xl font-bold'>Add task</h1>
 
 
-            <div onMouseOver={() => setClicked(true)} >
+            <div className='max-w-screen-sm mx-auto' onMouseOver={() => setClicked(true)} >
                 {isClicked ?
 
                     <>
-                        <div className='w-full border-blue-900 border-2  rounded '>
+                        <div className='w-full p-5 border-blue-900 border-2  rounded '>
                             <form onKeyDown={e => e.key === 'Enter' ? taskData : ''} onSubmit={taskData} action="">
-                                <input onKeyUp={() => setShowImgInput(true)} className='w-full border-blue-500  rounded px-5 py-2' type="text" name='taskTitle' placeholder='taskTitle' required></input>
+                            <h1 className='px-2 font-semibold text-blue-900'>Task title</h1>
+                                <input onKeyUp={() => setShowImgInput(true)} className='w-full border-blue-500  rounded px-5 py-2' type="text" name='taskTitle' placeholder='Task title' required></input>
                                 {imgInput ?
                                     <>
 
@@ -134,7 +135,7 @@ const AddTask = () => {
                                         </div>
                                         <input name='taskFile' className='mx-2 w-full' type="file" />
                                         {/* <Button className='mb-3' type="submit" variant="outlined">Add task</Button> */}
-                                        <div className='m-2'><BootstrapButton type="submit">Add task</BootstrapButton></div>
+                                        <div className='m-2'><BootstrapButton variant="outlined" type="submit">Add task</BootstrapButton></div>
 
 
 

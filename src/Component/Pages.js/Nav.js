@@ -1,11 +1,12 @@
-import { AppBar, Avatar, Box, Button, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material';
+import { AppBar, Avatar, Box, Button, IconButton, Menu, MenuItem, Switch, Toolbar, Tooltip, Typography } from '@mui/material';
 // import  Container  from 'postcss';
 import Container from '@mui/material/Container';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import AdbIcon from '@mui/icons-material/Adb';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import { AuthContext } from './Context/AuthProvider';
+import { ThemeContext } from './Context/ThemeProvider';
 
 
 
@@ -17,6 +18,8 @@ import { AuthContext } from './Context/AuthProvider';
 const Nav = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const {mode, setMode} = useContext(ThemeContext)
+  
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -153,6 +156,7 @@ const Nav = () => {
                 </Button>
           
             </Box>
+            <Switch  onChange={() => setMode(mode === "light" ? "dark" : "light")} />
   
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">

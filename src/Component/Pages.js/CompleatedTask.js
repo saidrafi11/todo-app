@@ -1,5 +1,6 @@
 import { Button } from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react';
+import { InfinitySpin } from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { AuthContext } from './Context/AuthProvider';
@@ -7,6 +8,7 @@ import CTask from './CTask';
 import Task from './Task';
 
 const CompleatedTask = () => {
+    const [loading, setLoading] = useState(true)
     const [isClicked, setClicked] = useState(false)
     const { user } = useContext(AuthContext)
     const [myCompleatedTasks, setMyCompleatedTasks] = useState([])
@@ -20,7 +22,7 @@ const CompleatedTask = () => {
         border: '1px solid',
         lineHeight: 1.5,
         
-        borderColor: '#0063cc',
+        borderColor: '#0000FF',
         textColor: '#ffffff',
         fontFamily: [
           '-apple-system',
@@ -36,11 +38,13 @@ const CompleatedTask = () => {
         ]})
 
         useEffect(() => {
+            setLoading(true)
 
             fetch(`https://mytodo-app-server.vercel.app/compleatedtasks?email=${user?.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setMyCompleatedTasks(data)
+                    setLoading(false)
                     console.log(data);
                 })
     
@@ -58,9 +62,24 @@ const CompleatedTask = () => {
             <h1  className='text-center mx-5 text-2xl font-bold'>Compleated task</h1>
 
             <div className='flex flex-col justify-center '>
-            <div className='mt-2 mx-auto'><BootstrapButton ><Link to={'/mytask'}  className='text-black'>Not compleated task</Link></BootstrapButton></div>
+            <div className='mt-2 mx-auto'>
+                <Button variant="outlined"><Link to={'/mytask'}  className='text-black'>Not compleated tasks</Link></Button>
+                </div>
+
 
                 {
+                    loading? 
+                    <>
+                    <div className='flex justify-center items-center min-h-screen'>
+                                <InfinitySpin
+                                    width='200'
+                                    color="#0000FF"
+                                />
+                            </div>
+                    </>
+                    :
+                    <>
+                    {
                     myCompleatedTasks?.map((task,i)=><CTask
                     key={i}
 
@@ -72,6 +91,9 @@ const CompleatedTask = () => {
 
                     </CTask>)
                 }
+                    </>
+                }
+                
             {/* <button onClick={() => setClicked(true)} className='w-full lg:w-4/5 border-2 m-2 border-blue-900 mx-auto rounded-md text-left'>
                 
 

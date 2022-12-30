@@ -1,5 +1,6 @@
 import { Button } from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react';
+import { InfinitySpin } from 'react-loader-spinner';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { AuthContext } from './Context/AuthProvider';
@@ -7,6 +8,8 @@ import Task from './Task';
 
 const MyTask = () => {
     const [isClicked, setClicked] = useState(false)
+    const [loading, setLoading] = useState(true)
+    console.log(loading);
     const location = useLocation()
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/compleatedtask';
@@ -42,18 +45,20 @@ const MyTask = () => {
 
 
     useEffect(() => {
+        setLoading(true)
 
         fetch(`https://mytodo-app-server.vercel.app/mytasks?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setMyTasks(data)
+                setLoading(false)
                 console.log(data);
             })
 
     }, [user])
 
 
-    
+
 
 
 
@@ -71,17 +76,36 @@ const MyTask = () => {
 
             <div className='flex flex-col justify-center '>
 
-                {
-                    myTasks?.map((task, i) =><Task
-                    key={i}
 
-                        task={task} 
+                {
+                    loading ?
+                        <>
+                            <div className='flex justify-center items-center min-h-screen'>
+                                <InfinitySpin
+                                    width='200'
+                                    color="#0000FF"
+                                />
+                            </div>
+
+                        </>
+                        :
+                        <>
+                        {
+                    myTasks?.map((task, i) => <Task
+                        key={i}
+
+                        task={task}
                         isClicked={isClicked}
                         setClicked={setClicked}
                         BootstrapButton={BootstrapButton}></Task>
 
-                        )
+                    )
                 }
+
+                        </>
+                }
+
+                
 
 
 

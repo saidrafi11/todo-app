@@ -3,13 +3,14 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { AuthContext } from './Context/AuthProvider';
+import GoogleIcon from '@mui/icons-material/Google';
 
 const Login = () => {
     const [loading, setLoading] = useState(true)
     const location = useLocation()
     const navigate = useNavigate();
-    const from = location.state?.from?.pathname || '/';
-
+    const from = location.state?.from?.pathname || '/addtask';
+  
 
 
     const BootstrapButton = styled(Button)({
@@ -92,6 +93,7 @@ const Login = () => {
             className=' mx-auto mt-2 p-5  border-2 rounded min-h-screen'
         >
 
+            <div className=' max-w-screen-sm mx-auto'>
             <div className='flex flex-col justify-center '>
             <h1  className='text-center mx-5 text-2xl font-bold'>Login</h1>
             <form  onSubmit={handleLogin}>
@@ -105,9 +107,10 @@ const Login = () => {
                 </div>
                 <input className='w-full border-blue-500  rounded px-5 py-2' type="password" name='password' placeholder='Password' required></input>
                 {/* <Button className='mb-3' type="submit" variant="outlined">Add task</Button> */}
-                <div className='m-2'><BootstrapButton type="submit">Login</BootstrapButton></div>
+                {<h1 className='text-red-600 font-semibold'>{loginErr}</h1>}
+                <div className='m-2 ml-0'><BootstrapButton variant="outlined" type="submit">Login</BootstrapButton></div>
 
-                <div className='mx-auto'><Button onClick={handleGoogleSignIn} >Google SignIn</Button></div>
+                <div className='mx-auto flex justify-center'><Button variant="outlined" onClick={handleGoogleSignIn} ><GoogleIcon ></GoogleIcon> Google oneclick SignIn</Button></div>
 
 
 
@@ -115,7 +118,8 @@ const Login = () => {
 
 
             </form>
-            <p className='text-center pb-5'>New user?? <Link to='/signup'>Signup</Link></p>
+            <p className='text-center pb-5'>New user?? <Link className='font-bold' to='/signup'>Signup</Link></p>
+            </div>
             </div>
 
         </div>

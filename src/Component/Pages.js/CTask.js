@@ -99,9 +99,11 @@ const _id = task._id
 
                         <form onSubmit={handleComment} className=' m-2'>
                             <input className=' h-10 w-full p-5 border-blue-500  rounded ' type="text" name='comment' placeholder='Add comment' required></input>
-                            <div className='mt-2 '><BootstrapButton  type="submit"><h1 className='text-black'>Comment</h1></BootstrapButton></div>
-                            <div className='mt-2 '><BootstrapButton ><h1 onClick={handleDlt} className='text-black'>Delete task</h1></BootstrapButton></div>
-                            <div className='mt-2 '><BootstrapButton ><Link to={'/mytask'}  className='text-black'>Not compleated task</Link></BootstrapButton></div>
+                           <div className='flex justify-center'>
+                           <div className='m-2 '><BootstrapButton  type="submit"><h1 className='text-black'>Comment</h1></BootstrapButton></div>
+                            <div className='m-2 '><BootstrapButton ><h1 onClick={handleDlt} className='text-black'>Delete task</h1></BootstrapButton></div>
+                            <div className='m-2 '><BootstrapButton ><Link to={'/mytask'}  className='text-black'>Not compleated tasks</Link></BootstrapButton></div>
+                           </div>
                         </form>
                         
 

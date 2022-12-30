@@ -3,6 +3,8 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { AuthContext } from './Context/AuthProvider';
+import GoogleIcon from '@mui/icons-material/Google';
+import { pink } from '@mui/material/colors';
 
 const SignIn = () => {
     const [loading, setLoading] = useState(true)
@@ -92,11 +94,12 @@ const { createUser, updateUserProfile, providerLogin, googleProvider} = useConte
             backgroundImage: 'linear-gradient(23deg, #0093E9 0%, #f8fffe 100%)'
 
         }}
-            className=' mx-auto mt-2 p-5  border-2 rounded min-h-screen'
+            className=' mx-auto mt-2 p-5  border-2  rounded min-h-screen'
         >
 
+            <div className=' max-w-screen-sm mx-auto'>
             <div className='flex flex-col justify-center '>
-            <h1  className='text-center mx-5 text-2xl font-bold'>Signin</h1>
+            <h1  className='text-center mx-5 text-2xl font-bold'>New user signup</h1>
             <form  onSubmit={handleSignUp}>
                 <div>
                     <h1 className='px-2 font-semibold text-blue-900'>Name</h1>
@@ -111,10 +114,10 @@ const { createUser, updateUserProfile, providerLogin, googleProvider} = useConte
                 </div>
                 <input className='w-full border-blue-500  rounded px-5 py-2' type="password" name='password' placeholder='Password' required></input>
                 {/* <Button className='mb-3' type="submit" variant="outlined">Add task</Button> */}
-                <div className='m-2'><BootstrapButton type="submit">Sign up</BootstrapButton></div>
-                {<h1>{signUpErr}</h1>}
+                <div className='m-2 ml-0'><BootstrapButton variant="outlined" type="submit">Sign up</BootstrapButton></div>
+                {<h1 className='text-red-600 font-semibold'>{signUpErr}</h1>}
 
-                <div className='mx-auto'><Button onClick={handleGoogleSignIn} >Google SignIn</Button></div>
+                <div className='mx-auto flex justify-center'><Button variant="outlined"  onClick={handleGoogleSignIn} ><GoogleIcon ></GoogleIcon> Google oneclick SignIn</Button></div>
 
 
 
@@ -122,7 +125,8 @@ const { createUser, updateUserProfile, providerLogin, googleProvider} = useConte
 
 
             </form>
-            <p className='text-center pb-5'>Already have an account <Link to='/login'>Login</Link></p>
+            <p className='text-center pb-5'>Already have an account <Link className='font-bold' variant="outlined" to='/login'>Login</Link></p>
+            </div>
             </div>
 
         </div>
