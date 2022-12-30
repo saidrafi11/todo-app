@@ -22,6 +22,7 @@ const Task = ({isClicked, setClicked,BootstrapButton, task}) => {
             body: JSON.stringify(compleatedTask)
         }).then(res => res.json())
             .then(data => {
+                handleDltWP()
                 navigate(from, {replace: true})
 
 
@@ -59,11 +60,29 @@ const Task = ({isClicked, setClicked,BootstrapButton, task}) => {
                 
             }
         }
+        const handleDltWP = () =>{
+            
+                console.log(id)
+               fetch(`https://mytodo-app-server.vercel.app/deletetask/${id}`,{
+                method: 'DELETE'})
+                .then(res => res.json())
+                .then(data => {
+                    
+                    console.log(data)
+                    if(data.deletedCount > 0){
+                       
+                        
+                        
+                    } 
+                })
+                
+            
+        }
 
 
 
     return (
-        <button onClick={() => setClicked(true)} className='w-full max-w-2xl lg:w-4/5 border-2 m-2 border-blue-900 mx-auto rounded-md text-left'>
+        <button onClick={() => setClicked(true)} className='w-full max-w-2xl lg:w-4/5 border-2 m-2 bg-blue-100 border-blue-900 mx-auto rounded-md text-left'>
 
 
                             {isClicked ?

@@ -92,7 +92,7 @@ const _id = task._id
 
                         <h1 className='px-5 py-2 font-bold text-xl'>{task.taskTitle}</h1>
                         <h1 className='px-5 py-2 '>{task.taskDescription}</h1>
-                        <h1 className='px-5 py-2 '>Comments:</h1>
+                        <h1 className='px-5 font-semibold  '>Comments:</h1>
                         <Comments _id={_id}></Comments>
                         
 
